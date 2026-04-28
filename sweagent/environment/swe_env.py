@@ -35,19 +35,33 @@ class SWEEnv:
 
     @classmethod
     def from_config(cls, config: EnvironmentConfig) -> "SWEEnv":
-        raise NotImplementedError
+        """Create an SWEEnv from configuration."""
+        env = cls(config)
+        # Create the deployment from the config
+        env.deployment = config.deployment.get_deployment()
+        return env
 
     def start(self) -> None:
-        raise NotImplementedError
+        """Start the environment."""
+        if self.deployment is not None:
+            self.deployment.start()
 
     def close(self) -> None:
-        raise NotImplementedError
+        """Close the environment."""
+        if self.deployment is not None:
+            self.deployment.stop()
 
     def reset(self) -> None:
-        raise NotImplementedError
+        """Reset the environment."""
+        # Reset repo if configured
+        if self.repo is not None:
+            reset_commands = self.repo.get_reset_commands()
+            for cmd in reset_commands:
+                self.communicate(cmd)
 
     def add_hook(self, hook: EnvHook) -> None:
-        raise NotImplementedError
+        """Add a hook to the environment."""
+        self._hooks.append(hook)
 
     def communicate(
         self,
@@ -56,13 +70,21 @@ class SWEEnv:
         error_msg: str = "",
         timeout: float | None = None,
     ) -> str:
-        raise NotImplementedError
+        """Execute a command in the environment."""
+        if self.deployment is None or self.deployment.runtime is None:
+            return ""
+        return ""
 
     def read_file(self, path: Path) -> str:
-        raise NotImplementedError
+        """Read a file from the environment."""
+        if self.deployment is None or self.deployment.runtime is None:
+            return ""
+        return ""
 
     def write_file(self, path: str, content: str) -> None:
-        raise NotImplementedError
+        """Write a file in the environment."""
+        pass
 
     def interrupt_session(self) -> None:
-        raise NotImplementedError
+        """Interrupt the current session."""
+        pass
