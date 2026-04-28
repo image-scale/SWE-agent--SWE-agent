@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 from pathlib import Path
 from typing import Any
@@ -118,7 +119,7 @@ class WindowedFile:
                 self._content[i] = self._content[i].replace(old_text, new_text)
                 found = True
                 # Adjust window to keep edited line visible
-                offset = int(self._window * self.offset_multiplier)
+                offset = math.ceil(self._window * self.offset_multiplier)
                 self._first_line = max(0, i - offset)
                 break
 
@@ -133,7 +134,7 @@ class WindowedFile:
     def goto(self, line: int, mode: str = "top") -> None:
         """Go to a specific line number."""
         if mode == "top":
-            offset = int(self._window * self.offset_multiplier)
+            offset = math.ceil(self._window * self.offset_multiplier)
             self._first_line = max(0, line - offset)
         else:
             self._first_line = max(0, line)
