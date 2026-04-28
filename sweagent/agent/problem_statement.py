@@ -14,11 +14,14 @@ logger = logging.getLogger(__name__)
 MAX_IMAGE_SIZE = 10 * 1024 * 1024  # 10MB limit
 
 
-class ProblemStatement:
+class ProblemStatement(BaseModel):
     """Base class for problem statements."""
 
     id: str = ""
     type: str = "base"
+
+    class Config:
+        arbitrary_types_allowed = True
 
     def get_problem_statement(self) -> str:
         raise NotImplementedError
@@ -33,29 +36,27 @@ class EmptyProblemStatement(ProblemStatement):
         return ""
 
 
-class TextProblemStatement(BaseModel):
+class TextProblemStatement(ProblemStatement):
     """Problem statement from plain text."""
 
     text: str
-    id: str = ""
     type: str = "text"
 
     def get_problem_statement(self) -> str:
         return self.text
 
 
-class GithubIssue(BaseModel):
+class GithubIssue(ProblemStatement):
     """Problem statement from a GitHub issue."""
 
     github_url: str
-    id: str = ""
     type: str = "github"
 
     def get_problem_statement(self) -> str:
         raise NotImplementedError
 
 
-class SWEBenchMultimodalProblemStatement(BaseModel):
+class SWEBenchMultimodalProblemStatement(ProblemStatement):
     """Multimodal problem statement for SWE-bench."""
 
     text: str

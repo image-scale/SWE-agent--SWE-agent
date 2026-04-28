@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Any
 
@@ -41,8 +42,31 @@ class SWESmithRepoConfig(RepoConfig):
     mirror_url: str = ""
 
     def get_reset_commands(self) -> list[str]:
-        raise NotImplementedError
+        """Get commands to reset the repository to the base commit."""
+        if self.mirror_url:
+            # Fetch from mirror URL
+            token = os.environ.get("GITHUB_TOKEN", "")
+            fetch_url = self._get_url_with_token(self.mirror_url, token)
+            return [
+                f"git fetch {fetch_url} {self.base_commit}",
+                "git checkout FETCH_HEAD",
+            ]
+        else:
+            # Standard reset to base commit
+            return [
+                "git fetch",
+                f"git checkout {self.base_commit}",
+            ]
 
     @staticmethod
     def _get_url_with_token(url: str, token: str) -> str:
-        raise NotImplementedError
+        """Embed token into URL for authentication."""
+        if not url:
+            return ""
+        if not token:
+            return url
+        # Insert token after https://
+        # e.g., https://github.com/... -> https://TOKEN@github.com/...
+        if url.startswith("https://"):
+            return url.replace("https://", f"https://{token}@", 1)
+        return url
