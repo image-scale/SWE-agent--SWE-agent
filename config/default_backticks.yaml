@@ -1,0 +1,6 @@
+agent:
+  model:
+    name: "gpt-4o"
+  tools:
+    parse_function:
+      type: thought_action
