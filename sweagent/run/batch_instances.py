@@ -36,11 +36,13 @@ class SimpleBatchInstance(BaseModel):
     def from_swe_bench(cls, data: dict[str, Any]) -> "SimpleBatchInstance":
         """Create a SimpleBatchInstance from SWE-bench data."""
         instance_id = data.get("instance_id", "")
-        repo = data.get("repo", "").replace("/", "__")
-        version = data.get("version", "")
 
         # Construct image name following SWE-bench convention
-        image_name = f"docker.io/swebench/sweb.eval.x86_64.{repo}_{version.replace('.', '_')}_{instance_id.split('-')[0]}:latest"
+        # Format: docker.io/swebench/sweb.eval.x86_64.{instance_id}:latest
+        # with "__" replaced by "_1776_"
+        image_key = f"sweb.eval.x86_64.{instance_id.lower()}:latest"
+        image_key = image_key.replace("__", "_1776_")
+        image_name = f"docker.io/swebench/{image_key}"
 
         # Get problem statement
         problem_statement = data.get("problem_statement", "")
