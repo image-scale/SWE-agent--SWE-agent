@@ -22,3 +22,10 @@
 **Commit**: Add history processors for managing conversation context
 **Acceptance**: 8/8 criteria met
 **Verification**: tests FAIL on previous state (ModuleNotFoundError), PASS on current state
+
+## Round 4
+**Task**: Task 4 — Model abstraction layer
+**Files created**: codeagent/models.py, tests/test_models.py
+**Commit**: Add model abstraction layer for language model interactions with cost tracking
+**Acceptance**: 7/7 criteria met
+**Verification**: tests FAIL on previous state (ModuleNotFoundError), PASS on current state

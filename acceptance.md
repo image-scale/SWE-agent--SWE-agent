@@ -49,10 +49,20 @@
 ## Task 4: Model abstraction layer
 
 ### Acceptance Criteria
-- [ ] InstanceStats tracks instance_cost, tokens_sent, tokens_received, api_calls
-- [ ] InstanceStats supports addition and subtraction operations
-- [ ] ModelConfig provides configuration for LLM with name, temperature, cost limits
-- [ ] AbstractModel defines interface with query() method and stats property
-- [ ] PredeterminedModel returns preset responses (useful for testing)
-- [ ] ReplayModel replays actions from a trajectory file
-- [ ] Cost limits raise appropriate exceptions (InstanceCostLimitExceededError, TotalCostLimitExceededError)
+- [x] InstanceStats tracks instance_cost, tokens_sent, tokens_received, api_calls
+- [x] InstanceStats supports addition and subtraction operations
+- [x] ModelConfig provides configuration for LLM with name, temperature, cost limits
+- [x] AbstractModel defines interface with query() method and stats property
+- [x] PredeterminedModel returns preset responses (useful for testing)
+- [x] ReplayModel replays actions from a trajectory file
+- [x] Cost limits raise appropriate exceptions (InstanceCostLimitExceededError, TotalCostLimitExceededError)
+
+## Task 5: Tool configuration and handler
+
+### Acceptance Criteria
+- [ ] ToolFilterConfig specifies blocklist/allowlist for commands
+- [ ] ToolConfig combines filter settings, command execution settings, and environment variables
+- [ ] ToolHandler validates actions against blocklist and returns whether action should be blocked
+- [ ] ToolHandler checks for submission command in output
+- [ ] ToolHandler generates command documentation from registered commands
+- [ ] ToolHandler handles multiline command input with heredoc syntax
