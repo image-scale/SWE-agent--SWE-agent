@@ -15,3 +15,10 @@
 **Commit**: Add parsers for extracting thought and action from language model responses
 **Acceptance**: 13/13 criteria met
 **Verification**: tests FAIL on previous state (ModuleNotFoundError), PASS on current state
+
+## Round 3
+**Task**: Task 3 — History processors
+**Files created**: codeagent/history.py, tests/test_history.py
+**Commit**: Add history processors for managing conversation context
+**Acceptance**: 8/8 criteria met
+**Verification**: tests FAIL on previous state (ModuleNotFoundError), PASS on current state

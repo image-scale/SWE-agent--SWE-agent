@@ -37,11 +37,22 @@
 ## Task 3: History processors
 
 ### Acceptance Criteria
-- [ ] DefaultHistoryProcessor returns history unchanged
-- [ ] LastNObservations keeps only the last N observation messages, replacing earlier ones with a summary
-- [ ] LastNObservations never removes the first observation (instance template)
-- [ ] LastNObservations respects always_keep_output_for_tags and always_remove_output_for_tags
-- [ ] TagToolCallObservations adds tags to history items for specific tool calls
-- [ ] CacheControlHistoryProcessor adds cache_control markers to the last N user messages
-- [ ] CacheControlHistoryProcessor removes cache_control from other messages
-- [ ] RemoveRegex removes content matching regex patterns from history items
+- [x] DefaultHistoryProcessor returns history unchanged
+- [x] LastNObservations keeps only the last N observation messages, replacing earlier ones with a summary
+- [x] LastNObservations never removes the first observation (instance template)
+- [x] LastNObservations respects always_keep_output_for_tags and always_remove_output_for_tags
+- [x] TagToolCallObservations adds tags to history items for specific tool calls
+- [x] CacheControlHistoryProcessor adds cache_control markers to the last N user messages
+- [x] CacheControlHistoryProcessor removes cache_control from other messages
+- [x] RemoveRegex removes content matching regex patterns from history items
+
+## Task 4: Model abstraction layer
+
+### Acceptance Criteria
+- [ ] InstanceStats tracks instance_cost, tokens_sent, tokens_received, api_calls
+- [ ] InstanceStats supports addition and subtraction operations
+- [ ] ModelConfig provides configuration for LLM with name, temperature, cost limits
+- [ ] AbstractModel defines interface with query() method and stats property
+- [ ] PredeterminedModel returns preset responses (useful for testing)
+- [ ] ReplayModel replays actions from a trajectory file
+- [ ] Cost limits raise appropriate exceptions (InstanceCostLimitExceededError, TotalCostLimitExceededError)
