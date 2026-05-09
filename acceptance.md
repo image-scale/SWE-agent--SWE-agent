@@ -75,3 +75,15 @@
 - [x] TextProblemStatement returns provided text with auto-generated ID from hash
 - [x] FileProblemStatement reads content from file path
 - [x] Problem statements can provide extra fields for template rendering
+
+## Task 7: Environment abstraction
+
+### Acceptance Criteria
+- [x] Repo protocol defines base_commit, repo_name, copy(), get_reset_commands()
+- [x] LocalRepoConfig reads from local path and validates it's a git repository
+- [x] PreExistingRepoConfig handles repos that already exist on deployment
+- [x] EnvironmentConfig combines deployment settings, repo config, and post-startup commands
+- [x] SWEEnv class manages environment lifecycle (start, reset, close)
+- [x] SWEEnv.communicate() executes commands and returns output
+- [x] EnvHook provides extensibility points for environment lifecycle events
+- [x] CombinedEnvHooks aggregates multiple hooks

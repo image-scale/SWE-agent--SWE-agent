@@ -10,5 +10,5 @@ Build the SWE-agent system bottom-up with user-facing functionality first. Start
 - [x] Task 4: Implement the model abstraction layer with LiteLLM integration, cost tracking, and multiple model types (HumanModel, ReplayModel, LiteLLMModel)
 - [x] Task 5: Implement tool configuration, command definitions, and tool handler for managing available commands and their execution
 - [x] Task 6: Implement problem statement types for defining tasks (TextProblemStatement, FileProblemStatement, EmptyProblemStatement, GithubIssue)
-- [>] Task 7: Implement the environment abstraction for managing runtime execution and repository operations
-- [ ] Task 8: Implement the agent class that orchestrates models, tools, environment, and history to solve problems
+- [x] Task 7: Implement the environment abstraction for managing runtime execution and repository operations
+- [>] Task 8: Implement the agent class that orchestrates models, tools, environment, and history to solve problems
