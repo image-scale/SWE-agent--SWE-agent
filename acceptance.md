@@ -60,9 +60,18 @@
 ## Task 5: Tool configuration and handler
 
 ### Acceptance Criteria
-- [ ] ToolFilterConfig specifies blocklist/allowlist for commands
-- [ ] ToolConfig combines filter settings, command execution settings, and environment variables
-- [ ] ToolHandler validates actions against blocklist and returns whether action should be blocked
-- [ ] ToolHandler checks for submission command in output
-- [ ] ToolHandler generates command documentation from registered commands
-- [ ] ToolHandler handles multiline command input with heredoc syntax
+- [x] ToolFilterConfig specifies blocklist/allowlist for commands
+- [x] ToolConfig combines filter settings, command execution settings, and environment variables
+- [x] ToolHandler validates actions against blocklist and returns whether action should be blocked
+- [x] ToolHandler checks for submission command in output
+- [x] ToolHandler generates command documentation from registered commands
+- [x] ToolHandler handles multiline command input with heredoc syntax
+
+## Task 6: Problem statement types
+
+### Acceptance Criteria
+- [x] ProblemStatement protocol defines id, get_problem_statement(), and get_extra_fields()
+- [x] EmptyProblemStatement returns empty string with generated UUID
+- [x] TextProblemStatement returns provided text with auto-generated ID from hash
+- [x] FileProblemStatement reads content from file path
+- [x] Problem statements can provide extra fields for template rendering
