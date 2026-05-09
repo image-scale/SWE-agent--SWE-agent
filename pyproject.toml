@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codeagent"
+version = "0.1.0"
+description = "An autonomous software engineering agent powered by language models"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic",
+    "typing_extensions",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+namespaces = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
