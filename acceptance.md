@@ -87,3 +87,15 @@
 - [x] SWEEnv.communicate() executes commands and returns output
 - [x] EnvHook provides extensibility points for environment lifecycle events
 - [x] CombinedEnvHooks aggregates multiple hooks
+
+## Task 8: Agent orchestration
+
+### Acceptance Criteria
+- [x] AgentConfig provides configuration for agent behavior (templates, tools, max steps)
+- [x] TemplateConfig manages message templates for system, instance, observation, and errors
+- [x] AgentHook provides extensibility points for agent lifecycle events
+- [x] CombinedAgentHook aggregates multiple hooks
+- [x] DefaultAgent.setup() initializes agent with problem statement and environment
+- [x] DefaultAgent.step() executes one step: query model, parse response, execute action
+- [x] DefaultAgent.run() orchestrates complete problem-solving loop
+- [x] Agent saves trajectory to disk and tracks model statistics
