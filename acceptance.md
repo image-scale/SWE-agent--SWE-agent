@@ -20,16 +20,28 @@
 ## Task 2: LLM output parsers
 
 ### Acceptance Criteria
-- [ ] ThoughtActionParser parses model response into thought and action by finding code blocks wrapped in backticks
-- [ ] ThoughtActionParser raises FormatError when no code block is found
-- [ ] XMLThoughtActionParser extracts action from <command></command> tags
-- [ ] XMLThoughtActionParser raises FormatError when command tags are missing
-- [ ] FunctionCallingParser extracts action from tool_calls in model response
-- [ ] FunctionCallingParser raises FunctionCallingFormatError with "missing" code when no tool calls present
-- [ ] FunctionCallingParser raises FunctionCallingFormatError with "multiple" code when more than one tool call
-- [ ] FunctionCallingParser validates tool call against command list and raises error for unknown commands
-- [ ] JsonParser parses JSON object with "thought" and "command" fields
-- [ ] JsonParser raises FormatError for invalid JSON or missing keys
-- [ ] Identity parser returns the message unchanged as both thought and action
-- [ ] ActionParser verifies the first word is a known command name
-- [ ] EditFormat is a variant of ThoughtActionParser for edit operations
+- [x] ThoughtActionParser parses model response into thought and action by finding code blocks wrapped in backticks
+- [x] ThoughtActionParser raises FormatError when no code block is found
+- [x] XMLThoughtActionParser extracts action from <command></command> tags
+- [x] XMLThoughtActionParser raises FormatError when command tags are missing
+- [x] FunctionCallingParser extracts action from tool_calls in model response
+- [x] FunctionCallingParser raises FunctionCallingFormatError with "missing" code when no tool calls present
+- [x] FunctionCallingParser raises FunctionCallingFormatError with "multiple" code when more than one tool call
+- [x] FunctionCallingParser validates tool call against command list and raises error for unknown commands
+- [x] JsonParser parses JSON object with "thought" and "command" fields
+- [x] JsonParser raises FormatError for invalid JSON or missing keys
+- [x] Identity parser returns the message unchanged as both thought and action
+- [x] ActionParser verifies the first word is a known command name
+- [x] EditFormat is a variant of ThoughtActionParser for edit operations
+
+## Task 3: History processors
+
+### Acceptance Criteria
+- [ ] DefaultHistoryProcessor returns history unchanged
+- [ ] LastNObservations keeps only the last N observation messages, replacing earlier ones with a summary
+- [ ] LastNObservations never removes the first observation (instance template)
+- [ ] LastNObservations respects always_keep_output_for_tags and always_remove_output_for_tags
+- [ ] TagToolCallObservations adds tags to history items for specific tool calls
+- [ ] CacheControlHistoryProcessor adds cache_control markers to the last N user messages
+- [ ] CacheControlHistoryProcessor removes cache_control from other messages
+- [ ] RemoveRegex removes content matching regex patterns from history items
